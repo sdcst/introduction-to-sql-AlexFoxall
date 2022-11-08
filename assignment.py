@@ -27,3 +27,21 @@ import sqlite3
 file = 'dbase.db'
 connection = sqlite3.connect(file)
 print(connection)
+cursor = connection.cursor()
+x = input('pet name')
+c = input('pet species')
+v = input('pet breed')
+b = input('owner name')
+n = input('owner phone number')
+m = input('owner email')
+a = input('owner balance')
+s = input('date of first visit(mm/dd/yy)')
+data = [x,c,v,b,n,m,a,s]
+f = " ".join(data)
+print(data)
+cursor.execute(f)
+connection.commit()
+result = cursor.fetchall()
+print(result)
+for i in result:
+    print(i)

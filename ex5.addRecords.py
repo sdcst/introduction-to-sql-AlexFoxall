@@ -19,6 +19,7 @@ for i in data:
     query = f"insert into customers (name,email,cnum) values ('{i[0]}','{i[1]}',{i[2]});"
     print(query)
     cursor.execute(query)
+"""
 connection.commit()
 query = "select * from customers"
 cursor.execute(query)
@@ -26,3 +27,4 @@ result = cursor.fetchall()
 print(result)
 for i in result:
     print(i)
+"""
