@@ -24,7 +24,7 @@ need to use.
 """
 import sqlite3
 
-file = 'dbase.db'
+file = 'assignment.db'
 connection = sqlite3.connect(file)
 print(connection)
 cursor = connection.cursor()
@@ -37,10 +37,10 @@ m = input('owner email')
 a = input('owner balance')
 s = input('date of first visit(mm/dd/yy)')
 data = [x,c,v,b,n,m,a,s]
-
-query = f"insert into customers (pet name, pet species, pet breed, owner name, owner phone number, owner email, owner balance, date of first visit )values ('{x}','{c}','{v}','{b}','{n}','{m}','{a}',{s});"
-print(query)
-cursor.execute(query)
+for i in data:
+    query = f"create table if not exists help (pname,species,breed,name,pnum,email,balance,date) values ('{i[0]}','{i[1]}','{i[2]}','{i[3]}','{i[4]}','{i[5]}','{i[6]}','{i[7]}','{i[8]}');"
+    print(query)
+    cursor.execute(query)
 '''
 f = " ".join(data)
 print(data)
