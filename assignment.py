@@ -37,11 +37,11 @@ m = input('owner email')
 a = input('owner balance')
 s = input('date of first visit(mm/dd/yy)')
 data = [x,c,v,b,n,m,a,s]
-for i in data:
-    query = f"create table if not exists help (pname,species,breed,name,pnum,email,balance,date) values ('{i[0]}','{i[1]}','{i[2]}','{i[3]}','{i[4]}','{i[5]}','{i[6]}','{i[7]}','{i[8]}');"
-    print(query)
-    cursor.execute(query)
-'''
+
+query = f"create table if not exists help (pname,species,breed,name,pnum,email,balance,date) values ('{x}','{c}','{v}','{b}','{n}','{m}','{a}','{s}');"
+print(query)
+cursor.execute(query)
+
 f = " ".join(data)
 print(data)
 print(f)
@@ -51,4 +51,3 @@ result = cursor.fetchall()
 print(result)
 for i in result:
     print(i)
-'''
