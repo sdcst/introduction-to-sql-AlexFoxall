@@ -8,7 +8,6 @@ print(connection)
 
 cursor = connection.cursor()
 query = "select sqlite_version();"
-print(query)
 cursor.execute(query)
 result = cursor.fetchall()
 print(type(result))

@@ -37,16 +37,11 @@ m = input('owner email')
 a = input('owner balance')
 s = input('date of first visit(mm/dd/yy)')
 data = [x,c,v,b,n,m,a,s]
-cursor = connection.cursor()
-query = """
-create table if not exists dta (
-    id integer primary key autoincrement,
-    name tinytext,
-    email tinytext,
-    cnum int);
-"""
-cursor.execute(query)
+print(data[7])
+
+'''
 for i in data:
-    query = f"insert into dta (name,email,cnum) values ('{data});"
+    query = f"insert into customers (pname,species,breed,name,pnum,email,balance,date) values ('{i[0]}','{i[1]}','{i[2]}','{i[3]}','{i[4]}','{i[5]}','{i[6]}',{i[7]});"
     print(query)
     cursor.execute(query)
+'''
