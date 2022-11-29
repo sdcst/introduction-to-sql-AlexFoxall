@@ -1,7 +1,7 @@
 #!python3
 import sqlite3
 
-file = 'dbase.db'
+file = 'assignment.db'
 connection = sqlite3.connect(file)
 print(connection)
 

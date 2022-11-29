@@ -23,25 +23,52 @@ You will need to create the table yourself. Consider what data types you will
 need to use.
 """
 import sqlite3
+def add():
+    file = 'assignment.db'
+    connection = sqlite3.connect(file)
+    print(connection)
+    cursor = connection.cursor()
+    x = input('pet name')
+    c = input('pet species')
+    v = input('pet breed')
+    b = input('owner name')
+    n = input('owner phone number')
+    m = input('owner email')
+    a = input('owner balance')
+    s = input('date of first visit(mm/dd/yy)')
+    data = [x,c,v,b,n,m,a,s]
 
-file = 'assignment.db'
-connection = sqlite3.connect(file)
-print(connection)
-cursor = connection.cursor()
-x = input('pet name')
-c = input('pet species')
-v = input('pet breed')
-b = input('owner name')
-n = input('owner phone number')
-m = input('owner email')
-a = input('owner balance')
-s = input('date of first visit(mm/dd/yy)')
-data = [x,c,v,b,n,m,a,s]
-print(data[7])
+    query = """
+    create table if not exists customers (
+        id integer primary key autoincrement,
+        pet tinytext,
+        species tinytext,
+        breed tinytext,
+        name tinytext,
+        phone tinytext,
+        email tinytext,
+        balance int,
+        date tinytext
+        );
+    """
+    cursor.execute(query)
 
-'''
-for i in data:
-    query = f"insert into customers (pname,species,breed,name,pnum,email,balance,date) values ('{i[0]}','{i[1]}','{i[2]}','{i[3]}','{i[4]}','{i[5]}','{i[6]}',{i[7]});"
+
+    query = f"insert into customers (pet,species,breed,name,phone,email,balance,date) values ('{x}','{c}','{v}','{b}','{n}','{m}',{a},'{s}');"
     print(query)
     cursor.execute(query)
-'''
+    connection.commit()
+    return
+
+def findid():
+    file = 'assignment.db'
+    connection = sqlite3.connect(file)
+    print(connection)
+    x = input('enter name')
+    cursor = connection.cursor()
+    query = "select name from customers"
+    cursor.execute(query)
+    result = cursor.fetchall()
+    print(result)
+    return
+findid()
