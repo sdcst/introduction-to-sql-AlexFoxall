@@ -59,7 +59,7 @@ def add():
     cursor.execute(query)
     connection.commit()
     return
-
+#add()
 
 def findid():
     file = 'assignment.db'
@@ -70,16 +70,60 @@ def findid():
     query = "select * from customers"
     cursor.execute(query)
     result = cursor.fetchall()
-    print(result)
     for i in result:
-        print(i)
-        g = str(i)
-        f = g.find(x)
-        print(f)
-    #if w == x:
-        #print('w')
-    
-    
+        if i[1] == x:
+            print(i)
     return
     
-findid()
+#findid()
+
+def phone():
+    file = 'assignment.db'
+    connection = sqlite3.connect(file)
+    print(connection)
+    x = input('phone number ')
+    cursor = connection.cursor()
+    query = "select * from customers"
+    cursor.execute(query)
+    result = cursor.fetchall()
+    for i in result:
+        if i[5] == x:
+            print(i)
+    return
+
+#phone()
+
+def email():
+    file = 'assignment.db'
+    connection = sqlite3.connect(file)
+    print(connection)
+    x = input('email ')
+    cursor = connection.cursor()
+    query = "select * from customers"
+    cursor.execute(query)
+    result = cursor.fetchall()
+    for i in result:
+        if i[6] == x:
+            print(i)
+    return
+
+#email()
+
+x = input('if you wish to add a record press 1 \nif you wish to retreive record press 2')
+if x != '2':
+    if x != '1':
+        print('unknown command')
+if x == '1':
+    add()
+if x == '2':
+    r = input('if you want to log in with name press 1 \nif you want to log in with email press 2 \nif you want to log in with phone number press 3')
+    if r == '1':
+        findid()
+    if r == '2':
+        email()
+    if r == '3':
+        phone()
+    if r != '1':
+        if r != '2':
+            if r != '3':
+                print('unknown command')
