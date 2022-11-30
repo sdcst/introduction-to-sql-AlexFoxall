@@ -60,15 +60,26 @@ def add():
     connection.commit()
     return
 
+
 def findid():
     file = 'assignment.db'
     connection = sqlite3.connect(file)
     print(connection)
-    x = input('enter name')
+    x = input('enter name ')
     cursor = connection.cursor()
-    query = "select name from customers"
+    query = "select * from customers"
     cursor.execute(query)
     result = cursor.fetchall()
     print(result)
+    for i in result:
+        print(i)
+        g = str(i)
+        f = g.find(x)
+        print(f)
+    #if w == x:
+        #print('w')
+    
+    
     return
+    
 findid()
